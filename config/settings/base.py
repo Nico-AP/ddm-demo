@@ -119,7 +119,7 @@ THUMBNAIL_PROCESSORS = (
 
 # Redirect targets:
 LOGIN_REDIRECT_URL = '/ddm/projects/'
-LOGOUT_REDIRECT_URL = '/ddm/login/'
+LOGOUT_REDIRECT_URL = '/'
 
 
 # DJANGO-DDM
