@@ -1,0 +1,16 @@
+{% extends "ddm/admin/base.html" %}
+
+{% load static i18n %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'ddm_demo/css/custom-ddm.css' %}">
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'ddm_demo/img/ddl_favicon_black.svg' %}">
+{% endblock %}
+
+{% block header %}
+{% include "ddm_demo/custom-ddm/custom-header.html" %}
+{% endblock %}
+
+{% block footer %}
+{% include "ddm_demo/custom-ddm/custom-footer.html" %}
+{% endblock %}

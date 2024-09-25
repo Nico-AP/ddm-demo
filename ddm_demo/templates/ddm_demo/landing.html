@@ -13,32 +13,40 @@
 {% block main_body %}
 
 <div class="container row justify-content-center">
-  <div class="col-6 mt-5">
+  <div class="col-lg-8">
     <div class="row text-center">
       <img alt="Data Donation Module" height="100" alt="" src="{% static 'ddm/img/logos/DDM_Logo_Schwarz.svg' %}">
     </div>
 
     <div>
-      <h4 class="text-center ">Welcome to the Demo Page of <br>the Data Donation Module</h4>
+      <h4 class="text-center ">Data Donation Module - Demo Page</h4>
       <div class="mt-4 text-left">
-        <h5>About the Demo Page</h5>
         <p>
-          To use the demo version of the Data Donation Module, please create a user account.
+          This page is intended for researchers who are interested in the
+          Data Donation Module and wish to explore its functionalities.
+          This demo version of DDM is hosted by the <a href="https://datadonation.uzh.ch" target="_blank">Data Donation Lab of the University of Zurich</a>.
         </p>
+        <h5>Try the Demo</h5>
         <p>
-          This tool is hosted by the Data Donation Lab of the University of Zurich.
-          The demonstration tool is not intended to be used for "real-life" projects but to explore the tool.
-          If you would like to use the tool for your own projects,
+          To use the demo version of the Data Donation Module,
+          you need to create a user account. Afterwards, you can login and
+          try out the tool. If you already have a demo account, you can <a href="{% url 'account_login' %}">login here</a>.
         </p>
-        <h5>How to use the Demo Application</h5>
+        <p class="pt-2">
+          <a class="ddm-btn-large w-75" href="{% url 'account_signup' %}">Create a Demo Account</a>
+        </p>
+        <h5 class="pt-3">Scope and Limitations</h5>
         <p>
-          <a class="ddm-btn-large mt-3 w-75" href="">Create Demo Account</a>
+          The demo version is not intended to be used for "real-life" projects but to explore the tool.
+          If you would like to use the tool for your own projects, you can either
+          <a href="https://uzh.github.io/ddm/ddm/main/for_admins.html" target="_blank">host an instance of DDM</a> yourself
+          or <a href="mailto:datadonation@ikmz.uzh.ch">contact us</a> to host your
+          project on the infrastructure of the data donation lab.
         </p>
-        <p>If you already have an account, you can login to DDM here: [LINK]</p>
 
         <h5>Further Material</h5>
-        <p>Documentation</p>
-        <p>DDM Paper</p>
+        <p><a href="https://uzh.github.io/ddm/ddm/main/for_researchers.html" target="_blank">Documentation</a>: Official documentation of the Data Donation Module.</p>
+        <p><a href="https://journal.computationalcommunication.org/article/view/8597" target="_blank">DDM Paper</a>: A paper published in Computational Communication Research providing a compact overview of the Data Donation Module.</p>
       </div>
     </div>
 

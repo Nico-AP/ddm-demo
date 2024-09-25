@@ -9,17 +9,16 @@
   <link rel="stylesheet" href="{% static 'ddm/css/ddm-base.css' %}">
   <link rel="stylesheet" href="{% static 'ddm/css/research-interface-base.css' %}">
   <link rel="stylesheet" href="{% static 'ddm/css/bootstrap/bootstrap-icons.css' %}">
+
+  <link rel="stylesheet" href="{% static 'ddm_demo/css/custom-ddm.css' %}">
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'ddm_demo/img/ddl_favicon_black.svg' %}">
   {% block extrahead %}{% endblock %}
 </head>
 
 <body class="research-interface">
 
 {% block header %}
-  <div class="ddm-header">
-    <div class="container fs-6 fw-light">
-    {% include "ddm/admin/components/header.html" %}
-    </div>
-  </div>
+{% include "ddm_demo/custom-ddm/custom-header.html" %}
 {% endblock %}
 
 <div class="ddm-breadcrumbs container mt-3 mb-3 fw-light d-flex flex-row justify-content-between">
@@ -52,6 +51,7 @@
 </div>
 
 {% block footer %}
+{% include "ddm_demo/custom-ddm/custom-footer.html" %}
 {% endblock %}
 
 

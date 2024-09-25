@@ -1,0 +1,69 @@
+{% extends 'ddm/admin/base.html' %}
+
+{% load i18n static %}
+
+{% block page_title %}{% block head_title %}{% endblock %}{% endblock %}
+
+{% block header %}{% endblock header %}
+
+{% block main_body %}
+    <div class="container row justify-content-center">
+  <div class="col-4 text-center mt-5">
+    <div class="row">
+      <img alt="Data Donation Module" height="100" alt="" src="{% static 'ddm/img/logos/DDM_Logo_Schwarz.svg' %}">
+    </div>
+        {% block body %}
+            {% if messages %}
+                <div>
+                    <strong>{% trans "Messages:" %}</strong>
+                    <ul>
+                        {% for message in messages %}<li>{{ message }}</li>{% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <div class="pb-4">
+                    {% if user.is_authenticated %}
+                        {% url 'account_email' as email_url_ %}
+                        {% if email_url_ %}
+                                <a href="{{ email_url_ }}" class="pe-2">{% trans "Change Email" %}</a>
+                        {% endif %}
+                        {% url 'account_change_password' as change_password_url_ %}
+                        {% if change_password_url_ %}
+                                <a href="{{ change_password_url_ }}" class="pe-2">{% trans "Change Password" %}</a>
+                        {% endif %}
+                        {% url 'socialaccount_connections' as connections_url_ %}
+                        {% if connections_url_ %}
+                                <a href="{{ connections_url_ }}" class="pe-2">{% trans "Account Connections" %}</a>
+                        {% endif %}
+                        {% url 'mfa_index' as mfa_url_ %}
+                        {% if mfa_url_ %}
+                                <a href="{{ mfa_url_ }}" class="pe-2">{% trans "Two-Factor Authentication" %}</a>
+                        {% endif %}
+                        {% url 'usersessions_list' as usersessions_list_url_ %}
+                        {% if usersessions_list_url_ %}
+                                <a href="{{ usersessions_list_url_ }}" class="pe-2">{% trans "Sessions" %}</a>
+                        {% endif %}
+                        {% url 'account_logout' as logout_url_ %}
+                        {% if logout_url_ %}
+                                <a href="{{ logout_url_ }}" class="pe-2">{% trans "Sign Out" %}</a>
+                        {% endif %}
+                    {% else %}
+                        {% url 'account_login' as login_url_ %}
+                        {% if login_url_ %}
+                                <a href="{{ login_url_ }}" class="pe-2">{% trans "Sign In" %}</a>
+                        {% endif %}
+                        {% url 'account_signup' as signup_url_ %}
+                        {% if signup_url_ %}
+                                <a href="{{ signup_url_ }}" class="pe-2">{% trans "Sign Up" %}</a>
+                        {% endif %}
+                    {% endif %}
+            </div>
+            {% block content %}
+            {% endblock content %}
+        {% endblock body %}
+        {% block extra_body %}
+        {% endblock extra_body %}
+  </div>
+</div>
+{% endblock %}
+{% block footer %}{% endblock footer %}

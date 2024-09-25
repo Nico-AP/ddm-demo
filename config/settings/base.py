@@ -26,7 +26,9 @@ INSTALLED_APPS = [
     'webpack_loader',
     'rest_framework',
     'rest_framework.authtoken',
-    'ddm_demo'
+    'ddm_demo',
+    'allauth',
+    'allauth.account',
 ]
 
 MIDDLEWARE = [
@@ -38,10 +40,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend'
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -120,7 +124,7 @@ THUMBNAIL_PROCESSORS = (
 # Redirect targets:
 LOGIN_REDIRECT_URL = '/ddm/projects/'
 LOGOUT_REDIRECT_URL = '/'
-
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # DJANGO-DDM
 # ------------------------------------------------------------------------------
@@ -132,9 +136,6 @@ WEBPACK_LOADER = {
         'POLL_INTERVAL': 0.1,
         'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
     }
-}
-DDM_SETTINGS = {
-    'EMAIL_PERMISSION_CHECK':  r'.*(\.|@)uzh\.ch$',
 }
 
 DDM_DEFAULT_HEADER_IMG_LEFT = '/static/ddl/img/logos/ddl/ddl_logo_black.svg'

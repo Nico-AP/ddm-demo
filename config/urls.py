@@ -8,8 +8,6 @@ urlpatterns = [
     path(r'admin/', admin.site.urls),
     path('ddm/', include('ddm.urls')),
     path('', include('ddm_demo.urls')),
-    path('login/', auth_views.LoginView.as_view(template_name='ddm/admin/auth/login.html'), name='ddm-login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='ddm-logout'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
