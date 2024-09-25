@@ -1,0 +1,51 @@
+{% extends 'ddm/admin/base.html' %}
+
+{% load static %}
+
+{% block page_title %}Data Donation Module: Login{% endblock %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="{% static 'ddm_demo/css/base.css' %}">
+{% endblock %}
+
+{% block header %}{% endblock header %}
+
+{% block main_body %}
+
+<div class="container row justify-content-center">
+  <div class="col-6 mt-5">
+    <div class="row text-center">
+      <img alt="Data Donation Module" height="100" alt="" src="{% static 'ddm/img/logos/DDM_Logo_Schwarz.svg' %}">
+    </div>
+
+    <div>
+      <h4 class="text-center ">Welcome to the Demo Page of <br>the Data Donation Module</h4>
+      <div class="mt-4 text-left">
+        <h5>About the Demo Page</h5>
+        <p>
+          To use the demo version of the Data Donation Module, please create a user account.
+        </p>
+        <p>
+          This tool is hosted by the Data Donation Lab of the University of Zurich.
+          The demonstration tool is not intended to be used for "real-life" projects but to explore the tool.
+          If you would like to use the tool for your own projects,
+        </p>
+        <h5>How to use the Demo Application</h5>
+        <p>
+          <a class="ddm-btn-large mt-3 w-75" href="">Create Demo Account</a>
+        </p>
+        <p>If you already have an account, you can login to DDM here: [LINK]</p>
+
+        <h5>Further Material</h5>
+        <p>Documentation</p>
+        <p>DDM Paper</p>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+
+    </div>
+
+  </div>
+</div>
+{% endblock %}
