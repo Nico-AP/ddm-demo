@@ -25,6 +25,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+.env
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -318,3 +319,5 @@ yarn-error.log
 
 docs/*.html
 ddm_test_env*
+
+*.sqlite
