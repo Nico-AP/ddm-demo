@@ -70,14 +70,11 @@ LOGGING = {
 # ------------------------------------------------------------------------------
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'HOST': os.environ['DJANGO_DB_HOST'],
-        'PORT': '',
+        'PORT': 'localhost',
         'NAME': os.environ['DJANGO_DB_NAME'],
         'USER': os.environ['DJANGO_DB_USER'],
-        'PASSWORD': os.environ['DJANGO_DB_PW'],
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        }
+        'PASSWORD': os.environ['DJANGO_DB_PW']
     }
 }
