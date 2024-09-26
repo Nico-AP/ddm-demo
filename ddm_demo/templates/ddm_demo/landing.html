@@ -22,8 +22,16 @@
       <h4 class="text-center ">Data Donation Module - Demo Page</h4>
       <div class="mt-4 text-left">
         <p>
+          The Data Donation Module (DDM) is a web application to collect data
+          donations for research. It provides the means to guide participants through the
+          data donation process, define rules on how the personal data provided
+          by the participants are preprocessed and filtered before being
+          transmitted to the researchers, and optionally enrich the donated data
+          with the participants’ self-reports, collected through an integrated questionnaire.
+        </p>
+        <p>
           This page is intended for researchers who are interested in the
-          Data Donation Module and wish to explore its functionalities.
+          DDM and wish to explore its functionalities.
           This demo version of DDM is hosted by the <a href="https://datadonation.uzh.ch" target="_blank">Data Donation Lab of the University of Zurich</a>.
         </p>
         <h5>Try the Demo</h5>
@@ -34,9 +42,9 @@
         </p>
         <p class="pt-2">
           <a class="ddm-btn-large w-75" href="{% url 'account_signup' %}">Create a Demo Account</a>
+          <a class="ddm-btn-large w-75" href="{% url 'account_login' %}">Login</a>
         </p>
-        <h5 class="pt-3">Scope and Limitations</h5>
-        <p>
+        <p class="pt-3">
           The demo version is not intended to be used for "real-life" projects but to explore the tool.
           If you would like to use the tool for your own projects, you can either
           <a href="https://uzh.github.io/ddm/ddm/main/for_admins.html" target="_blank">host an instance of DDM</a> yourself
