@@ -21,8 +21,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'ddm',
-    'ckeditor',
-    'ckeditor_uploader',
+    'ddm.apis',
+    'ddm.auth',
+    'ddm.logging',
+    'ddm.questionnaire',
+    'ddm.datadonation',
+    'ddm.participation',
+    'ddm.projects',
+    'ddm.core',
+    'django_ckeditor_5',
     'webpack_loader',
     'rest_framework',
     'rest_framework.authtoken',
@@ -62,7 +69,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
-                'ddm.context_processors.add_ddm_version',
+                'ddm.core.context_processors.add_ddm_version',
             ],
         },
     },
@@ -132,25 +139,139 @@ ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
 WEBPACK_LOADER = {
     'DEFAULT': {
         'CACHE': True,
-        'BUNDLE_DIR_NAME': 'ddm/vue/',
-        'STATS_FILE': os.path.join(STATIC_ROOT, 'ddm/vue/webpack-stats.json'),
+        'BUNDLE_DIR_NAME': 'core/vue/',
+        'STATS_FILE': os.path.join(STATIC_ROOT, 'ddm_core/vue/webpack-stats.json'),
         'POLL_INTERVAL': 0.1,
         'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
     }
 }
 
-DDM_DEFAULT_HEADER_IMG_LEFT = '/static/ddl/img/logos/ddl/ddl_logo_black.svg'
-DDM_DEFAULT_HEADER_IMG_RIGHT = '/static/ddl/img/logos/external/uzh_logo_d_pos.svg'
+DDM_DEFAULT_HEADER_IMG_LEFT = '/static/ddm_demo/img/ddl_logo_black.svg'
 
 # CKEditor
 # ------------------------------------------------------------------------------
-CKEDITOR_RESTRICT_BY_USER = True
-CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_5_FILE_UPLOAD_PERMISSION = 'authenticated'
+CKEDITOR_5_ALLOW_ALL_FILE_TYPES = True
+CKEDITOR_5_UPLOAD_FILE_TYPES = ['jpeg', 'pdf', 'png', 'mp4']
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'full',
-        'height': 300,
-        'width': 300,
-    },
+ATTRIBUTES_TO_ALLOW = {
+    'href': True,
+    'target': True,
+    'rel': True,
+    'class': True,
+    'aria-label': True,
+    'data-*': True,
+    'id': True,
+    'type': True,
+    'data-bs-toggle': True,
+    'data-bs-target': True,
+    'aria-expanded': True,
+    'aria-controls': True,
+    'aria-labelledby': True,
+}
+
+CKEDITOR_5_CONFIGS = {
+    'ddm_ckeditor':  {
+        'blockToolbar': [
+            'paragraph', 'heading1', 'heading2', 'heading3',
+            '|',
+            'bulletedList', 'numberedList',
+            '|',
+            'blockQuote',
+        ],
+        'toolbar': [
+            'heading', '|',
+            'alignment', 'outdent', 'indent', '|',
+            'bold', 'italic', 'underline', 'link', 'highlight', '|',
+            {
+                'label': 'Fonts',
+                'icon': 'text',
+                'items': ['fontSize', 'fontFamily', 'fontColor']
+            }, '|',
+            'bulletedList', 'numberedList', 'insertTable', 'blockQuote', 'code', 'removeFormat', '|',
+            'insertImage', 'fileUpload', 'mediaEmbed', '|',
+            'sourceEditing'
+        ],
+        'image': {
+            'toolbar': ['imageTextAlternative', '|', 'imageStyle:alignLeft',
+                        'imageStyle:alignRight', 'imageStyle:alignCenter', 'imageStyle:side',  '|'],
+            'styles': [
+                'full',
+                'side',
+                'alignLeft',
+                'alignRight',
+                'alignCenter',
+            ]
+        },
+        'table': {
+            'contentToolbar': ['tableColumn', 'tableRow', 'mergeTableCells',
+                               'tableProperties', 'tableCellProperties'],
+        },
+        'heading': {
+            'options': [
+                { 'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph' },
+                { 'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1' },
+                { 'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2' },
+                { 'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3' }
+            ]
+        },
+        'htmlSupport': {
+            'allow': [
+                {
+                    'name': 'video',
+                    'attributes': {
+                        'height': True,
+                        'width': True,
+                        'controls': True,
+                    },
+                    'styles': True
+                },
+                {
+                    'name': 'p',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'span',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'div',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'a',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'table',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'td',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'th',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'button',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'h1',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'h2',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+            ],
+            'disallow': []
+        },
+        'wordCount': {
+            'displayCharacters': False,
+            'displayWords': False,
+        }
+    }
 }

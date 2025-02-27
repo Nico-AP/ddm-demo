@@ -25,10 +25,6 @@ SECURE_HSTS_SECONDS = 3600
 SECURE_HSTS_PRELOAD = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
-# TODO: CSP (https://realpython.com/django-nginx-gunicorn/#adding-a-content-security-policy-csp-header)
-# MIDDLEWARE += ['csp.middleware.CSPMiddleware']
-# CSP_STYLE_SRC = ["'self'"]
-
 SECURE_SSL_REDIRECT = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
@@ -75,6 +71,9 @@ DATABASES = {
         'PORT': '',
         'NAME': os.environ['DJANGO_DB_NAME'],
         'USER': os.environ['DJANGO_DB_USER'],
-        'PASSWORD': os.environ['DJANGO_DB_PW']
+        'PASSWORD': os.environ['DJANGO_DB_PW'],
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        }
     }
 }

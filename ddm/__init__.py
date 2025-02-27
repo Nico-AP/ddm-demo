@@ -1,1 +1,0 @@
-VERSION = '__version__'
