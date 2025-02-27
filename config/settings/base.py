@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'ddm_demo',
     'ddm',
     'ddm.apis',
     'ddm.auth',
@@ -33,7 +34,6 @@ INSTALLED_APPS = [
     'webpack_loader',
     'rest_framework',
     'rest_framework.authtoken',
-    'ddm_demo',
     'allauth',
     'allauth.account',
 ]
