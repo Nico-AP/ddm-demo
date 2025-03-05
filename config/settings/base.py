@@ -133,6 +133,7 @@ LOGIN_REDIRECT_URL = '/ddm/projects/'
 LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
+ACCOUNT_EMAIL_REQUIRED = True
 
 # DJANGO-DDM
 # ------------------------------------------------------------------------------
