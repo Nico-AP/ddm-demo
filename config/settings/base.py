@@ -138,12 +138,21 @@ ACCOUNT_EMAIL_REQUIRED = True
 # DJANGO-DDM
 # ------------------------------------------------------------------------------
 WEBPACK_LOADER = {
-    'DEFAULT': {
+    'DDM_UPLOADER': {
         'CACHE': True,
-        'BUNDLE_DIR_NAME': 'core/vue/',
-        'STATS_FILE': os.path.join(STATIC_ROOT, 'ddm_core/vue/webpack-stats.json'),
+        'BUNDLE_DIR_NAME': 'ddm_core/frontend/uploader/',
+        'STATS_FILE': os.path.join(STATIC_ROOT, 'ddm_core/frontend/uploader/webpack-stats.json'),
         'POLL_INTERVAL': 0.1,
-        'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
+        'TIMEOUT': None,
+        'IGNORE': [r'.+\.hot-update.js', r'.+\.map']
+    },
+    'DDM_QUESTIONNAIRE': {
+        'CACHE': True,
+        'BUNDLE_DIR_NAME': 'ddm_core/frontend/questionnaire/',
+        'STATS_FILE': os.path.join(STATIC_ROOT, 'ddm_core/frontend/questionnaire/webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'TIMEOUT': None,
+        'IGNORE': [r'.+\.hot-update.js', r'.+\.map']
     }
 }
 
