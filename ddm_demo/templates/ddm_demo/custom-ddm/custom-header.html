@@ -24,7 +24,10 @@
             </div>
 
             <div class="navbar-item child">
-              <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+              <form method="post" action="{% url 'account_logout' %}">
+                  {% csrf_token %}
+                  <button type="submit" class="nav-link">Log out</button>
+              </form>
             </div>
 
             <div class="navbar-item child fs-08 pt-2">
